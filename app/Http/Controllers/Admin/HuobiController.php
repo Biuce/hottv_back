@@ -291,6 +291,11 @@ class HuobiController extends Controller
         $objActSheet->setCellValue('D1', trans('huobi.money'));
         $baseRow = 2; //数据从N-1行开始往下输出 这里是避免头信息被覆盖
         // 根据条件获取授权码列表
+        if (isset($condition['date2']) && !empty($condition['date2'])) {
+            $times = explode(" - ", $condition['date2']);
+            $condition['startTime'] = $times[0];
+            $condition['endTime'] = $times[1];
+        }
         if (isset($condition['status']) && $condition['status'] == 1) {  // 充入火币
             // 自己充入火币记录
             if (\Auth::guard('admin')->user()->id == 1) {
