@@ -7,3 +7,4 @@ Route::get('/huobis/{id}/edit', 'HuobiController@edit')->name('huobi.edit');
 Route::put('/huobis/{id}', 'HuobiController@update')->name('huobi.update');
 Route::get('/huobis/{id}/info', 'HuobiController@info')->name('huobi.info');
 Route::delete('/huobis/{id}', 'HuobiController@delete')->name('huobi.delete');
+Route::get('/huobis/export', 'HuobiController@export')->name('huobi.export');

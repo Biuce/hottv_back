@@ -35,7 +35,7 @@
                                 {{trans('adminUser.phone')}}: {{ $info['phone'] }}
                             </li>
                             <li class="list-inline-item">
-                                {{trans('adminUser.level')}}: {{ $info->levels->level_name }}
+                                {{trans('adminUser.level')}}: {{ $info->levels->level_name ?? "" }}
                             </li>
                         </ul>
                         <ul class="list-inline">

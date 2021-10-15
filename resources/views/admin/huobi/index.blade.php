@@ -60,7 +60,7 @@
             </div>
 
             <div style="margin-top: 20px;">
-                <form name="admin_list_sea" class="form-search" method="get" action="{{ route('admin::huobi.index') }}">
+                <form name="admin_list_sea" class="form-search" method="get" id="export" action="{{ route('admin::huobi.index') }}">
                     {{ csrf_field() }}
                     <div class="row row-15">
                         <div class="col-sm-4">
@@ -86,7 +86,10 @@
                         </div>
                         <div class="col-sm-2">
                             <button class="btn btn-success" type="submit" lay-submit lay-filter="formorder"
-                                    id="submitBtn">{{trans('general.search')}}</button>
+                                    id="submitBtn" onclick="check(1)">{{trans('general.search')}}</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-success" type="submit"  onclick="check(2)">{{trans('general.excel')}}</button>
                         </div>
                     </div>
                 </form>
@@ -184,6 +187,71 @@
             range: true,
             trigger: 'click'
         });
+
+        var token = $("input[name='_token']").val();
+
+        function check(id) {
+            var url = "{{ route('admin::huobi.index') }}";
+            var excel_url = "{{ route('admin::huobi.export') }}";
+            if (id == 1) {
+                console.log(url);
+                $( "#export" ).attr( 'action' ,url);     //通过jquery为action属性赋值
+            } else {
+                console.log(excel_url);
+                $( "#export" ).attr( 'action' ,excel_url);     //通过jquery为action属性赋值
+            }
+        }
+
+        function excel(url) {
+            $.ajax({
+                url: url,
+                type: "GET",   //请求方式
+                headers: {'X-CSRF-Token': token},
+                success: function (result) {
+                    if (result.code !== 0) {
+                        layer.msg(result.msg, {shift: 6, skin: 'alert-secondary alert-lighter'});
+                        return false;
+                    }
+                    if (result.redirect) {
+                        location.href = '{!! url()->current() !!}';
+                    }
+                },
+                error: function (resp, stat, text) {
+                    if (window.form_submit) {
+                        form_submit.prop('disabled', false);
+                    }
+                    if (resp.status === 422) {
+                        var parse = $.parseJSON(resp.responseText);
+                        if (parse) {
+                            layer.msg(parse.msg, {shift: 6, skin: 'alert-secondary alert-lighter'});
+                        }
+                        return false;
+                    } else if (resp.status === 404) {
+                        layer.msg("{{trans('general.resources_not')}}", {icon: 5, skin: 'alert-secondary alert-lighter'});
+                        return false;
+                    } else if (resp.status === 401) {
+                        layer.msg("{{trans('general.login_first')}}", {shift: 6, skin: 'alert-secondary alert-lighter'});
+                        return false;
+                    } else if (resp.status === 429) {
+                        layer.msg("{{trans('general.Overvisiting')}}", {shift: 6, skin: 'alert-secondary alert-lighter'});
+                        return false;
+                    } else if (resp.status === 419) {
+                        layer.msg("{{trans('general.illegal_request')}}", {shift: 6, skin: 'alert-secondary alert-lighter'});
+                        return false;
+                    } else if (resp.status === 500) {
+                        layer.msg("{{trans('general.internal_error')}}", {shift: 6, skin: 'alert-secondary alert-lighter'});
+                        return false;
+                    } else {
+                        var parse = $.parseJSON(resp.responseText);
+                        // if (parse && parse.err) {
+                        if (parse) {
+                            layer.alert(parse.msg);
+                        }
+                        return false;
+                    }
+                }
+            });
+        }
     </script>
     @endsection
     </div>

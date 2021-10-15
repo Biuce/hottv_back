@@ -28,4 +28,5 @@ return [
     'this_month_recharge' => 'Bulan Ini Adalah Pengisian Semula Peringkat Tertinggi',
     'add_recharge' => 'Berkumpul Ke HotCoin',
     'add_lower_profit' => 'Keuntungan Terkumpul',
+    'huobi_recode' => 'Rekod duit syiling kebakaran',
 ];

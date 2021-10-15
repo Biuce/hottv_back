@@ -28,4 +28,5 @@ return [
     'this_month_recharge' => '이달 산하를 위한 충전',
     'add_recharge' => '총충전HOTCOIN',
     'add_lower_profit' => '총수당',
+    'huobi_recode' => '파이어 머니 레코드',
 ];

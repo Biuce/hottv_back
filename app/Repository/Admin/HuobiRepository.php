@@ -10,6 +10,9 @@ namespace App\Repository\Admin;
 
 use App\Model\Admin\Huobi;
 use App\Repository\Searchable;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class HuobiRepository
@@ -21,7 +24,7 @@ class HuobiRepository
      * @Description: 下级火币数据
      * @param $perPage
      * @param array $condition
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return LengthAwarePaginator
      * @Author: 李军伟
      */
     public static function list($perPage, $condition = [])
@@ -136,6 +139,116 @@ class HuobiRepository
         }
         // print_r(DB::getQueryLog());   //获取查询语句、参数和执行时间
 
+        return $data;
+    }
+
+    /**
+     * @Title: listByWhere
+     * @Describe 导入excel查询
+     * @param $where
+     * @param array $condition
+     * @return Builder[]|Collection
+     * @author lijunwei
+     * @Date 2021/10/15 14:14
+     */
+    public static function listByWhere($where, array $condition = [])
+    {
+        // DB::connection()->enableQueryLog(); // 开启执行日志
+        if ($condition['status'] == 4) {
+            unset($condition['status']);
+            // 获取管理员的直属下级
+            $where_ids = ['pid' => 1];
+            $ids = AdminUserRepository::getIds($where_ids);
+            if (isset($condition['startTime']) && !empty($condition['startTime'])) {
+                $start_time = $condition['startTime'] . " 00:00:00";
+                $end_time = $condition['endTime'] . " 23:59:59";
+                unset($condition['startTime']);
+                unset($condition['endTime']);
+                $data = Huobi::query()
+                    ->where(function ($query) use ($condition) {
+                        Searchable::buildQuery($query, $condition);
+                    })
+                    ->where($where)
+                    // ->whereIn("user_id", $ids)
+                    ->whereRaw('created_at >= ' . "'" . $start_time . "'")
+                    ->whereRaw('created_at <= ' . "'" . $end_time . "'")
+                    ->orderBy('id', 'desc')
+                    ->get();
+            } else {
+                $data = Huobi::query()
+                    ->where(function ($query) use ($condition) {
+                        Searchable::buildQuery($query, $condition);
+                    })
+                    ->where($where)
+                    // ->whereIn("user_id", $ids)
+                    ->orderBy('id', 'desc')
+                    ->get();
+            }
+        } else {
+            unset($condition['status']);
+            if (isset($condition['startTime']) && !empty($condition['startTime'])) {
+                $start_time = $condition['startTime'] . " 00:00:00";
+                $end_time = $condition['endTime'] . " 23:59:59";
+                unset($condition['startTime']);
+                unset($condition['endTime']);
+                $data = Huobi::query()
+                    ->where(function ($query) use ($condition) {
+                        Searchable::buildQuery($query, $condition);
+                    })
+                    ->where($where)
+                    ->whereRaw('created_at >= ' . "'" . $start_time . "'")
+                    ->whereRaw('created_at <= ' . "'" . $end_time . "'")
+                    ->orderBy('id', 'desc')
+                    ->get();
+            } else {
+                $data = Huobi::query()
+                    ->where(function ($query) use ($condition) {
+                        Searchable::buildQuery($query, $condition);
+                    })
+                    ->where($where)
+                    ->orderBy('id', 'desc')
+                    ->get();
+            }
+        }
+        // print_r(DB::getQueryLog());   //获取查询语句、参数和执行时间
+
+        return $data;
+    }
+
+    /**
+     * @Title: defaultList
+     * @Describe 导入excel默认数据
+     * @param $perPage
+     * @param array $condition
+     * @return LengthAwarePaginator
+     * @author lijunwei
+     * @Date 2021/10/15 14:17
+     */
+    public static function defaultList(array $condition = []): LengthAwarePaginator
+    {
+//        DB::connection()->enableQueryLog();#开启执行日志
+        if (isset($condition['startTime']) && !empty($condition['startTime'])) {
+            $start_time = $condition['startTime'] . " 00:00:00";
+            $end_time = $condition['endTime'] . " 23:59:59";
+            unset($condition['startTime']);
+            unset($condition['endTime']);
+            $data = Huobi::query()
+                ->where(function ($query) use ($condition) {
+                    Searchable::buildQuery($query, $condition);
+                })
+                ->whereRaw('created_at >= ' . "'" . $start_time . "'")
+                ->whereRaw('created_at <= ' . "'" . $end_time . "'")
+                ->orderBy('id', 'desc')
+                ->get();
+        } else {
+            $data = Huobi::query()
+                ->where(function ($query) use ($condition) {
+                    Searchable::buildQuery($query, $condition);
+                })
+                ->orderBy('id', 'desc')
+                ->get();
+        }
+//        print_r(DB::getQueryLog());
         return $data;
     }
 

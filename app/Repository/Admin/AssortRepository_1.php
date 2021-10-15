@@ -12,7 +12,7 @@ use App\Model\Admin\Assort;
 use App\Repository\Searchable;
 use Illuminate\Support\Facades\DB;
 
-class AssortRepository
+class AssortRepository_1
 {
     use Searchable;
 

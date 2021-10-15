@@ -27,4 +27,5 @@ return [
     'this_month_recharge' => 'Top Up for Downline this month',
     'add_recharge' => 'Accumulated Top Up',
     'add_lower_profit' => 'Accumulated Profit',
+    'huobi_recode' => 'Fire money record',
 ];

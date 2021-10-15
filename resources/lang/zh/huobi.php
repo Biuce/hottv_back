@@ -28,4 +28,5 @@ return [
     'this_month_recharge' => '本月为下级充值',
     'add_recharge' => '累计充入火币',
     'add_lower_profit' => '累计利润',
+    'huobi_recode' => '火币记录',
 ];

@@ -87,6 +87,10 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin::adminUser.visual', ['id' => $v['id']]) }}">{{trans('adminUser.detail')}}</a>
+                                                @if($v['name'] != 'admin')
+                                                <a class="dropdown-item"
+                                                   href="{{ route('admin::adminUser.recharge', ['id' => $v['id']]) }}">{{trans('adminUser.chongzhi')}}</a>
+                                                @endif
                                             </div>
                                         @endif
                                     </div>
