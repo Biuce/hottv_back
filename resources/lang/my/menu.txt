@@ -1,0 +1,131 @@
+Halaman Utama
+Senarai Ejen
+Data Senarai Ejen
+Tambah Ejen
+Jimat Ejen
+Ejen Penyuntingan
+Ejen Kemas Kini
+Senarai Menu
+Data Senarai Menu
+Menu Baru
+Simpan Menu
+Edit Menu
+Menu Kemas Kini
+Pengurusan Sistem
+Kemas Kini Menu Secara Automatik
+Senarai Peranan
+Antara Muka Data Senarai Peranan
+Peranan Baru
+Simpan Peranan
+Edit Peranan
+Kemas Kini Peranan
+Menetapkan Peranan
+Kemas Kini Peranan Pengguna
+Memberikan Kebenaran
+Kemas Kini Kebenaran
+Konfigurasi Antaramuka Data Senarai
+Konfigurasi Baru
+Simpan Konfigurasi
+Edit Konfigurasi
+Kemas Kini Konfigurasi
+Senarai Log
+Antara Muka Data Senarai Log
+Operasi Pukal
+Pengurusan Kandungan
+Padam Menu
+Senarai Kategori
+Antara Muka Data Senarai Slot Iklan
+Tambahkan Slot Iklan
+Simpan Slot Iklan
+Edit Slot Iklan
+Kemas Kini Slot Iklan
+Senarai Model
+Antara Muka Data Senarai Model
+Padamkan Pakej
+Kemas Kini Pakej
+Pakej Penyuntingan
+Jimat Pakej
+Pakej Baru
+Butiran Pakej
+Pakej Tahap Baru
+Pakej Tahap Pemeliharaan
+Padamkan Kod Kebenaran
+Kemas Kini Kod Kebenaran
+Edit Kod Kebenaran
+Padamkan Templat
+Kemas Kini Templat
+Edit Templat
+Simpan Templat
+Templat Baru
+Antara Muka Data Senarai Templat
+Senarai Templat
+Padam Pengguna
+Kemas Kini Pengguna
+Edit Pengguna
+Simpan Pengguna
+Pengguna Baru
+Antara Muka Data Senarai Pengguna
+Senarai Pengguna
+Keluarkan Label
+Kemas Kini Label
+Edit Teg
+Simpan Label
+Tambah Teg
+Antaramuka Data Senarai Tag
+Senarai Teg
+Padamkan Komen
+Kemas Kini Komen
+Edit Komen
+Antara Muka Data Senarai Komen
+Senarai Komen
+Pengurusan Kod Kebenaran
+Pengurusan Tahap
+Tahap Pelarasan Ejen
+Pengurusan HotCoin
+Pengurusan Yang Menyokong
+Pengurusan Kos Agensi
+Padamkan Tahap
+Tahap Kemas Kini
+Tahap Suntingan
+Tahap Baru
+Tahap Jimat
+Perincian Tahap
+Simpan Kod Kebenaran
+Tambahkan Kod Kebenaran
+Perincian Kod Kebenaran
+Maklumat Ejen
+Paparan Ejen
+Pengisian Semula Ejen
+Penyerahan Caj Ejen
+Maklumat Peribadi
+Penyuntingan Maklumat Peribadi
+Hantarkan Maklumat Peribadi
+Tukar Kata Laluan
+Tukar Hantar Kata Laluan
+Log Keluar
+Batalkan Pengesahan Akaun
+Batalkan Penyerahan Akaun
+Muat Naik Avatar Pengguna
+Pengurusan Log Keluar
+Log Keluar Untuk Melihat
+Kemas Kini Log Keluar
+Tukar Kata Laluan (Langkah 1)
+Tukar Kata Laluan (Penyerahan Langkah Pertama)
+Tukar Kata Laluan (Langkah 2)
+Tukar Kata Laluan (Langkah 3)
+Tukar Kata Laluan (Langkah 4)
+Tukar Kata Laluan (Dihantar Pada Langkah 2)
+Tukar Kata Laluan (Sahkan Langkah 4)
+Batalkan Akaun (hantar Pengesahan E-mel)
+Batalkan Akaun (pengesahan E-mel)
+Dapatkan Kod Kebenaran (Kod)
+Pengurusan Saluran
+
+
+
+Pengurusan Alat
+Fungsi Asas
+Pengurusan Templat
+Pengurusan Label
+Pengurusan Komen
+Fungsi Asas
