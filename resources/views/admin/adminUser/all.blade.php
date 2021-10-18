@@ -89,7 +89,9 @@
                                                    href="{{ route('admin::adminUser.visual', ['id' => $v['id']]) }}">{{trans('adminUser.detail')}}</a>
                                                 @if($v['name'] != 'admin')
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin::adminUser.recharge', ['id' => $v['id']]) }}">{{trans('adminUser.chongzhi')}}</a>
+                                                   href="{{ route('admin::adminUser.recharge', ['id' => $v['id'],
+                                                   'type' => 1])
+                                                   }}">{{trans('adminUser.chongzhi')}}</a>
                                                 @endif
                                             </div>
                                         @endif

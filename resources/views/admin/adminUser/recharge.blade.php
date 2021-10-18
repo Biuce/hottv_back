@@ -166,6 +166,7 @@
         }
 
         var token = $("input[name='_token']").val();
+        var type = '<?php echo $type; ?>';
         //监听提交
         $('#form').submit(function () {
             window.form_submit = $('#form').find('[type=submit]');
@@ -185,7 +186,11 @@
                     }
 
                     if (result.redirect) {
-                        location.href = '{{ route('admin::adminUser.index') }}';
+                        if (type == '1') {
+                            location.href = '{{ route('admin::adminUser.all') }}';
+                        } else {
+                            location.href = '{{ route('admin::adminUser.index') }}';
+                        }
                     }
                 },
                 error: function (resp, stat, text) {

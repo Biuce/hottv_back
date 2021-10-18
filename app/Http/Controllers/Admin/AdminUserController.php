@@ -1161,12 +1161,14 @@ class AdminUserController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @Author: 李军伟
      */
-    public function recharge($id)
+    public function recharge(Request $request, $id)
     {
+        $type = $request->input('type', 0);
         // 获取用户信息
         $info = AdminUserRepository::find($id);
         return view('admin.adminUser.recharge', [
             'info' => $info,
+            'type' => $type,
         ]);
     }
 
