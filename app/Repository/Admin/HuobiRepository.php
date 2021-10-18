@@ -220,11 +220,11 @@ class HuobiRepository
      * @Describe 导入excel默认数据
      * @param $perPage
      * @param array $condition
-     * @return LengthAwarePaginator
+     * @return
      * @author lijunwei
      * @Date 2021/10/15 14:17
      */
-    public static function defaultList(array $condition = []): LengthAwarePaginator
+    public static function defaultList(array $condition = [])
     {
 //        DB::connection()->enableQueryLog();#开启执行日志
         if (isset($condition['startTime']) && !empty($condition['startTime'])) {
@@ -233,18 +233,14 @@ class HuobiRepository
             unset($condition['startTime']);
             unset($condition['endTime']);
             $data = Huobi::query()
-                ->where(function ($query) use ($condition) {
-                    Searchable::buildQuery($query, $condition);
-                })
+                ->where($condition)
                 ->whereRaw('created_at >= ' . "'" . $start_time . "'")
                 ->whereRaw('created_at <= ' . "'" . $end_time . "'")
                 ->orderBy('id', 'desc')
                 ->get();
         } else {
             $data = Huobi::query()
-                ->where(function ($query) use ($condition) {
-                    Searchable::buildQuery($query, $condition);
-                })
+                ->where($condition)
                 ->orderBy('id', 'desc')
                 ->get();
         }
