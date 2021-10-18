@@ -226,25 +226,27 @@ class HuobiRepository
      */
     public static function defaultList(array $condition = [])
     {
-//        DB::connection()->enableQueryLog();#开启执行日志
+        DB::connection()->enableQueryLog();#开启执行日志
         if (isset($condition['startTime']) && !empty($condition['startTime'])) {
             $start_time = $condition['startTime'] . " 00:00:00";
             $end_time = $condition['endTime'] . " 23:59:59";
             unset($condition['startTime']);
             unset($condition['endTime']);
             $data = Huobi::query()
-                ->where($condition)
+                ->where('money', '>', 0)
+                ->where('user_id', '=', $condition['user_id'][1])
                 ->whereRaw('created_at >= ' . "'" . $start_time . "'")
                 ->whereRaw('created_at <= ' . "'" . $end_time . "'")
                 ->orderBy('id', 'desc')
                 ->get();
         } else {
             $data = Huobi::query()
-                ->where($condition)
+                ->where('money', '>', 0)
+                ->where('user_id', '=', $condition['user_id'][1])
                 ->orderBy('id', 'desc')
                 ->get();
         }
-//        print_r(DB::getQueryLog());
+        print_r(DB::getQueryLog());
         return $data;
     }
 

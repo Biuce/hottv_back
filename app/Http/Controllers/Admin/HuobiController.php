@@ -330,7 +330,6 @@ class HuobiController extends Controller
             unset($condition['status']);
             // 获取该用户及该用户的下级数据（获取所有用户id）
             if (\Auth::guard('admin')->user()->id != 1) {
-                $condition['money'] = ['>', 0];
                 $condition['user_id'] = ['=', \Auth::guard('admin')->user()->id];
             }
             $data = HuobiRepository::defaultList($condition);
