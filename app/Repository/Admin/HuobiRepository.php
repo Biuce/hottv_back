@@ -226,7 +226,7 @@ class HuobiRepository
      */
     public static function defaultList(array $condition = [])
     {
-        DB::connection()->enableQueryLog();#开启执行日志
+//        DB::connection()->enableQueryLog();#开启执行日志
         if (isset($condition['startTime']) && !empty($condition['startTime'])) {
             $start_time = $condition['startTime'] . " 00:00:00";
             $end_time = $condition['endTime'] . " 23:59:59";
@@ -246,7 +246,7 @@ class HuobiRepository
                 ->orderBy('id', 'desc')
                 ->get();
         }
-        print_r(DB::getQueryLog());
+//        print_r(DB::getQueryLog());
         return $data;
     }
 
