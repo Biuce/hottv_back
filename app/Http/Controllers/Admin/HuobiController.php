@@ -295,8 +295,8 @@ class HuobiController extends Controller
             $times = explode(" - ", $condition['date2']);
             $condition['startTime'] = $times[0];
             $condition['endTime'] = $times[1];
-            unset($condition['date2']);
         }
+        unset($condition['date2']);
         if (isset($condition['status']) && $condition['status'] == 1) {  // 充入火币
             // 自己充入火币记录
             if (\Auth::guard('admin')->user()->id == 1) {
