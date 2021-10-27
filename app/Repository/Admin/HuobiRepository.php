@@ -169,6 +169,7 @@ class HuobiRepository
                         Searchable::buildQuery($query, $condition);
                     })
                     ->where($where)
+                    ->where('money', '>', 0)
                     // ->whereIn("user_id", $ids)
                     ->whereRaw('created_at >= ' . "'" . $start_time . "'")
                     ->whereRaw('created_at <= ' . "'" . $end_time . "'")
@@ -180,6 +181,7 @@ class HuobiRepository
                         Searchable::buildQuery($query, $condition);
                     })
                     ->where($where)
+                    ->where('money', '>', 0)
                     // ->whereIn("user_id", $ids)
                     ->orderBy('id', 'desc')
                     ->get();
